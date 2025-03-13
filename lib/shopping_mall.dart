@@ -48,6 +48,9 @@ class ShoppingMall {
       print('상품 이름을 영어로 입력해 주세요!');
 
       String productInput = stdin.readLineSync()!;
+
+      // 일치하는 값이 없을 때 where보다는 firstWhere로 해야 에러가 발생하여 try-catch문이 동작
+      // try-catch문이 동작해야 while문으로 다시 돌아갈 수 있음
       Product filteredProduct = products.firstWhere(
         (product) => product.name == productInput,
       );
@@ -82,6 +85,31 @@ class ShoppingMall {
     }
   }
 
+  void deleteToCart() {
+    print('변경할 상품 이름을 영어로 입력해 주세요!');
+
+    String productInput = stdin.readLineSync()!;
+    List<Product> cartKeyList = cart.keys.toList();
+
+    // 일치하는 값이 없을 때 where보다는 firstWhere로 해야 에러가 발생하여 try-catch문이 동작
+    // try-catch문이 동작해야 while문으로 다시 돌아갈 수 있음
+    Product productToEdit = cartKeyList.firstWhere(
+      (product) => product.name == productInput,
+    );
+
+    print('상품 개수를 입력해 주세요.');
+
+    int? amount = int.parse(stdin.readLineSync()!);
+
+    if (amount <= 0) {
+      print('해당 상품을 제거 했습니다.');
+      cart.remove(productToEdit);
+    } else {
+      print('${productToEdit.name}을/를 $amount개로 수정했습니다.');
+      cart[productToEdit] = amount;
+    }
+  }
+
   // 장바구니에 담긴 상품의 총 가격을 보여주는 메서드
   void showTotal() {
     if (cart.isEmpty) {
@@ -96,6 +124,17 @@ class ShoppingMall {
       print('총 $totalPrice원 입니다!');
 
       totalPrice = 0;
+
+      print('상품 개수를 수정하려면 1을 입력해 주세요.');
+      print('아니라면 Enter를 입력해 주세요.');
+
+      int? deleteTrigger = int.parse(stdin.readLineSync()!);
+      if (deleteTrigger == 1) {
+        deleteToCart();
+      } else {
+        // while문으로 다시 돌아가기 위해 강제 예외를 발생
+        throw Exception();
+      }
     }
   }
 
@@ -132,7 +171,6 @@ class ShoppingMall {
               break;
             }
           case 6:
-            // 장바구니 초기화
             removeCart();
             break;
           default:
