@@ -20,7 +20,7 @@
 <br/>
 
 ## 🚨TroubleShooting
-> 터미널 입력 값 중 한글 인코딩 문제
+> [터미널 입력 값 중 한글 인코딩 문제](https://skyhyunjinlee.tistory.com/entry/TIL-006-Dart%EB%A1%9C-%EC%BD%98%EC%86%94-%EC%87%BC%ED%95%91%EB%AA%B0-%EB%A7%8C%EB%93%A4%EA%B8%B0)
 > 
 `문제상황` :  
 - 장바구니에 상품을 담기 위해 터미널에 한글을 입력하면 출력 값이 제대로 보이지 않는 문제가 발생
@@ -31,7 +31,7 @@
 
 <br/>
 
-> 객체의 property에 접근할 때 생기는 문법 문제
+> [객체의 property에 접근할 때 생기는 문법 문제](https://skyhyunjinlee.tistory.com/entry/TIL-006-Dart%EB%A1%9C-%EC%BD%98%EC%86%94-%EC%87%BC%ED%95%91%EB%AA%B0-%EB%A7%8C%EB%93%A4%EA%B8%B0-2)
 > 
 `문제상황` : 
 - `List.whrere()`의 콜백함수의 인자의 타입은 클래스의 인스턴스 객체인데, `객체['속성']`으로 접근하려 할 때 컴파일 타임 에러가 발생
